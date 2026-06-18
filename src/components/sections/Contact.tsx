@@ -1,10 +1,46 @@
 "use client";
 
+import { useState } from "react";
+
 import { motion } from "framer-motion";
 import { FadeIn } from "@/components/ui/animation-wrappers";
 import { Send, MapPin, Mail, GitBranch, Link as LinkIcon, Terminal } from "lucide-react";
 
 export default function Contact() {
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setStatus("submitting");
+
+    const formData = new FormData(e.currentTarget);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/gguruprasad2004@gmail.com", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(data)
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        (e.target as HTMLFormElement).reset();
+      } else {
+        setStatus("error");
+      }
+    } catch (error) {
+      setStatus("error");
+    }
+    
+    setTimeout(() => {
+      setStatus((current) => (current === "success" || current === "error" ? "idle" : current));
+    }, 5000);
+  };
+
   return (
     <section id="contact" className="relative py-32 bg-[#0c0505] overflow-hidden">
       {/* Background Orbs */}
@@ -78,13 +114,19 @@ export default function Contact() {
           {/* Contact Form */}
           <div className="lg:col-span-3">
             <FadeIn delay={0.4} direction="left">
-              <form className="glass p-8 rounded-3xl border border-white/10 flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+              <form className="glass p-8 rounded-3xl border border-white/10 flex flex-col gap-6" onSubmit={handleSubmit}>
+                {/* FormSubmit Configuration */}
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_template" value="table" />
+
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
                     <label htmlFor="name" className="text-sm font-medium text-slate-400">Your Name</label>
                     <input 
                       type="text" 
                       id="name"
+                      name="name"
+                      required
                       className="bg-[#1a0b0b] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/50 transition-all"
                       placeholder="John Doe"
                     />
@@ -94,6 +136,8 @@ export default function Contact() {
                     <input 
                       type="email" 
                       id="email"
+                      name="email"
+                      required
                       className="bg-[#1a0b0b] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/50 transition-all"
                       placeholder="john@example.com"
                     />
@@ -105,6 +149,8 @@ export default function Contact() {
                   <input 
                     type="text" 
                     id="subject"
+                    name="_subject"
+                    required
                     className="bg-[#1a0b0b] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/50 transition-all"
                     placeholder="Project Inquiry"
                   />
@@ -114,16 +160,22 @@ export default function Contact() {
                   <label htmlFor="message" className="text-sm font-medium text-slate-400">Message</label>
                   <textarea 
                     id="message"
+                    name="message"
+                    required
                     rows={5}
                     className="bg-[#1a0b0b] border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-red-500/50 focus:ring-1 focus:ring-red-500/50 transition-all resize-none"
                     placeholder="Hello Guru, I'd like to talk about..."
                   />
                 </div>
 
-                <button className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-medium text-white transition-all bg-red-500 rounded-xl hover:bg-red-500 hover:shadow-[0_0_30px_rgba(37,99,235,0.3)] overflow-hidden mt-4">
+                <button 
+                  type="submit"
+                  disabled={status === "submitting" || status === "success"}
+                  className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-medium text-white transition-all bg-red-500 rounded-xl hover:bg-red-600 shadow-lg hover:shadow-red-500/25 overflow-hidden mt-4 disabled:opacity-70 disabled:cursor-not-allowed"
+                >
                   <span className="relative z-10 flex items-center gap-2">
-                    Send Message
-                    <Send className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
+                    {status === "submitting" ? "Sending..." : status === "success" ? "Message Sent!" : status === "error" ? "Error! Try Again" : "Send Message"}
+                    {status === "idle" && <Send className="w-4 h-4 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />}
                   </span>
                 </button>
               </form>
