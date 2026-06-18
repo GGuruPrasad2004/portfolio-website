@@ -43,7 +43,7 @@ const projects = [
     demo: "#",
   },
   {
-    title: "EcoVoice – Generative AI Audio Alerts",
+    title: "EcoHaven – Generative AI Audio Alerts",
     subtitle: "Personal Project | Generative AI",
     description: "Designed a Generative AI system that converts smart meter data into personalized audio alerts in English & Kannada. Aligned solution with UN SDGs and delivered a working prototype as a StreamLit web app.",
     icon: <Leaf className="w-8 h-8 text-emerald-400" />,
@@ -52,7 +52,7 @@ const projects = [
     shadow: "group-hover:shadow-[0_0_40px_rgba(16,185,129,0.2)]",
     tags: ["Generative AI", "Streamlit", "Audio AI", "Python"],
     github: "#",
-    demo: "#",
+    demo: "https://sonic-eco-haven-energy-awareness.vercel.app/",
   }
 ];
 
@@ -126,9 +126,6 @@ function TiltCard({ project }: { project: typeof projects[0] }) {
         </div>
         
         <div style={{ transform: "translateZ(30px)" }} className="flex items-center gap-4 mt-auto pointer-events-auto border-t border-white/10 pt-6">
-          <a href={project.github} className="flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-white transition-colors">
-            <GitBranch className="w-4 h-4" /> Code
-          </a>
           <a href={project.demo} className="flex items-center gap-2 text-sm font-medium text-slate-400 hover:text-white transition-colors">
             <ExternalLink className="w-4 h-4" /> Live Demo
           </a>
