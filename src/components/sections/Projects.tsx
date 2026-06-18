@@ -43,14 +43,14 @@ const projects = [
     demo: "#",
   },
   {
-    title: "EcoHaven – Generative AI Audio Alerts",
-    subtitle: "Personal Project | Generative AI",
-    description: "Designed a Generative AI system that converts smart meter data into personalized audio alerts in English & Kannada. Aligned solution with UN SDGs and delivered a working prototype as a StreamLit web app.",
+    title: "EcoHaven – AI Energy Awareness",
+    subtitle: "Personal Project | React & Generative AI",
+    description: "Developed a multisensory web application for real-time energy monitoring. Features dynamic ambient audio feedback based on consumption levels and integrates the Gemini API to generate intelligent usage reports and insights.",
     icon: <Leaf className="w-8 h-8 text-emerald-400" />,
     color: "from-emerald-500/20 to-emerald-900/20",
     border: "group-hover:border-emerald-500/50",
     shadow: "group-hover:shadow-[0_0_40px_rgba(16,185,129,0.2)]",
-    tags: ["Generative AI", "Streamlit", "Audio AI", "Python"],
+    tags: ["React", "Gemini API", "Audio AI", "Vite"],
     github: "#",
     demo: "https://sonic-eco-haven-energy-awareness.vercel.app/",
   }
