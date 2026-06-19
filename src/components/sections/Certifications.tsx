@@ -5,25 +5,36 @@ import { Award, ExternalLink, ShieldCheck } from "lucide-react";
 
 const certifications = [
   {
-    title: "Data Science for Engineers",
-    issuer: "NPTEL / IIT",
-    icon: <ShieldCheck className="w-8 h-8 text-rose-500" />,
+    title: "Space Tech Hackathon",
+    issuer: "Solid Waste Management | STPI & Srishti",
+    icon: <Award className="w-8 h-8 text-rose-500" />,
     color: "from-rose-500/20 to-rose-500/20",
     border: "group-hover:border-rose-500/50",
+    url: "/certificates/space-tech-hackathon.jpg"
   },
   {
-    title: "Data Mining",
-    issuer: "NPTEL / IIT",
+    title: "Robotics & AI Hackathon",
+    issuer: "Vivekananda Institute of Technology",
     icon: <Award className="w-8 h-8 text-orange-500" />,
     color: "from-orange-500/20 to-orange-500/20",
     border: "group-hover:border-orange-500/50",
+    url: "/certificates/robotics-ai-hackathon.jpg"
+  },
+  {
+    title: "Data Mining (Elite)",
+    issuer: "NPTEL / IIT Kharagpur",
+    icon: <ShieldCheck className="w-8 h-8 text-emerald-500" />,
+    color: "from-emerald-500/20 to-emerald-500/20",
+    border: "group-hover:border-emerald-500/50",
+    url: "/certificates/data-mining.jpg"
   },
   {
     title: "Basics of Python",
     issuer: "Infosys Springboard",
-    icon: <Award className="w-8 h-8 text-red-500" />,
-    color: "from-red-500/20 to-red-500/20",
-    border: "group-hover:border-red-500/50",
+    icon: <ShieldCheck className="w-8 h-8 text-blue-500" />,
+    color: "from-blue-500/20 to-blue-500/20",
+    border: "group-hover:border-blue-500/50",
+    url: "/certificates/python-basics.jpg"
   }
 ];
 
@@ -34,18 +45,18 @@ export default function Certifications() {
         <FadeIn>
           <div className="flex flex-col items-center justify-center text-center mb-20">
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-white mb-4">
-              Licenses & <span className="text-orange-500">Certifications</span>
+              Hackathons & <span className="text-orange-500">Certifications</span>
             </h2>
             <p className="text-slate-400 max-w-2xl">
-              Continuous learning and professional development.
+              Active participation in innovation hackathons and continuous professional development.
             </p>
           </div>
         </FadeIn>
 
-        <StaggerContainer className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <StaggerContainer className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {certifications.map((cert, idx) => (
             <StaggerItem key={idx}>
-              <div className={`group relative h-full glass p-8 rounded-3xl border border-white/10 ${cert.border} transition-all duration-500 overflow-hidden cursor-pointer`}>
+              <a href={cert.url} target="_blank" rel="noopener noreferrer" className={`block group relative h-full glass p-8 rounded-3xl border border-white/10 ${cert.border} transition-all duration-500 overflow-hidden cursor-pointer`}>
                 <div className={`absolute inset-0 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 
                 <div className="relative z-10 flex flex-col h-full">
@@ -61,7 +72,7 @@ export default function Certifications() {
                     <ExternalLink className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                   </div>
                 </div>
-              </div>
+              </a>
             </StaggerItem>
           ))}
         </StaggerContainer>
