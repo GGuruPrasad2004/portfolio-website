@@ -3,9 +3,21 @@
 import { useRef, MouseEvent } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { FadeIn, StaggerContainer, StaggerItem } from "@/components/ui/animation-wrappers";
-import { GitBranch, ExternalLink, Network, Car, TrafficCone, Leaf } from "lucide-react";
+import { GitBranch, ExternalLink, Network, Car, TrafficCone, Leaf, HeartPulse } from "lucide-react";
 
 const projects = [
+  {
+    title: "MindCheck AI",
+    subtitle: "Personal Project | NLP & Mental Health",
+    description: "Developed a proactive mental health monitoring system using Natural Language Processing. The application analyzes text for distress signals, categorizes risk levels, and provides actionable intervention strategies.",
+    icon: <HeartPulse className="w-8 h-8 text-pink-500" />,
+    color: "from-pink-500/20 to-pink-900/20",
+    border: "group-hover:border-pink-500/50",
+    shadow: "group-hover:shadow-[0_0_40px_rgba(236,72,153,0.2)]",
+    tags: ["React", "FastAPI", "Transformers", "NLP"],
+    github: "#",
+    demo: "https://mindcheck-ai-alpha.vercel.app/",
+  },
   {
     title: "AI-Powered UE Capability Parser",
     subtitle: "Samsung PRISM | Research Project",
