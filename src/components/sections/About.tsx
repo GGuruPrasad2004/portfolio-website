@@ -9,8 +9,8 @@ import Image from "next/image";
 export default function About() {
   const stats = [
     { label: "CGPA", value: 8.05, decimals: 2, icon: <GraduationCap className="w-5 h-5 text-red-500" /> },
-    { label: "Projects", value: 5, suffix: "+", icon: <Code2 className="w-5 h-5 text-orange-500" /> },
-    { label: "Certifications", value: 3, suffix: "+", icon: <Award className="w-5 h-5 text-rose-500" /> },
+    { label: "Projects", value: 4, suffix: "+", icon: <Code2 className="w-5 h-5 text-orange-500" /> },
+    { label: "Certifications", value: 4, suffix: "+", icon: <Award className="w-5 h-5 text-rose-500" /> },
     { label: "Research Exp", value: 1, suffix: " yr", icon: <BrainCircuit className="w-5 h-5 text-red-500" /> },
   ];
 

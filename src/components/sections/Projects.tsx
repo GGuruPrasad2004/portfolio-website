@@ -42,18 +42,7 @@ const projects = [
     github: "#",
     demo: "#",
   },
-  {
-    title: "Intelligent Vehicle Damage Detection System",
-    subtitle: "Personal Project | Computer Vision",
-    description: "Trained YOLOv11 model on CarDD dataset for multi-class vehicle damage detection including dents, scratches, and glass damage. Developed a fully functional Gradio web application for real-time image upload and annotation.",
-    icon: <Car className="w-8 h-8 text-red-500" />,
-    color: "from-red-500/20 to-red-500/20",
-    border: "group-hover:border-red-500/50",
-    shadow: "group-hover:shadow-[0_0_40px_rgba(59,130,246,0.2)]",
-    tags: ["YOLOv11", "Computer Vision", "Gradio", "Python"],
-    github: "#",
-    demo: "#",
-  },
+
   {
     title: "EcoHaven – AI Energy Awareness",
     subtitle: "Personal Project | React & Generative AI",
