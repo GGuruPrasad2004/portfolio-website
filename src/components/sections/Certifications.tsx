@@ -10,7 +10,7 @@ const certifications = [
     icon: <Award className="w-8 h-8 text-rose-500" />,
     color: "from-rose-500/20 to-rose-500/20",
     border: "group-hover:border-rose-500/50",
-    url: "/certificates/space-tech-hackathon.jpg"
+    url: "/certificates/space-tech-hackathon.jpeg"
   },
   {
     title: "Robotics & AI Hackathon",
@@ -18,7 +18,7 @@ const certifications = [
     icon: <Award className="w-8 h-8 text-orange-500" />,
     color: "from-orange-500/20 to-orange-500/20",
     border: "group-hover:border-orange-500/50",
-    url: "/certificates/robotics-ai-hackathon.jpg"
+    url: "/certificates/robotics-ai-hackathon.jpeg"
   },
   {
     title: "Data Mining (Elite)",
@@ -26,7 +26,7 @@ const certifications = [
     icon: <ShieldCheck className="w-8 h-8 text-emerald-500" />,
     color: "from-emerald-500/20 to-emerald-500/20",
     border: "group-hover:border-emerald-500/50",
-    url: "/certificates/data-mining.jpg"
+    url: "/certificates/data-mining.jpeg"
   },
   {
     title: "Basics of Python",
@@ -34,7 +34,7 @@ const certifications = [
     icon: <ShieldCheck className="w-8 h-8 text-blue-500" />,
     color: "from-blue-500/20 to-blue-500/20",
     border: "group-hover:border-blue-500/50",
-    url: "/certificates/python-basics.jpg"
+    url: "/certificates/python-basics.jpeg"
   }
 ];
 
