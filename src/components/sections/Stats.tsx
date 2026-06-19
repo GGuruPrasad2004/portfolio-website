@@ -49,15 +49,15 @@ export default function Stats() {
     // Fetch LeetCode Stats
     const fetchLeetCode = async () => {
       try {
-        const res = await fetch("https://leetcode-stats-api.herokuapp.com/GGuruPrasad");
+        const res = await fetch("https://leetcode-api-faisalshohag.vercel.app/GGuruPrasad");
         const data = await res.json();
         
-        if (data.status === "success") {
+        if (data && data.totalSubmissions) {
           setLeetcode({
             totalSolved: data.totalSolved || 0,
-            easySolved: data.easySolved || 0,
-            mediumSolved: data.mediumSolved || 0,
-            hardSolved: data.hardSolved || 0,
+            easySolved: data.totalSubmissions.find((s: any) => s.difficulty === "Easy")?.count || 0,
+            mediumSolved: data.totalSubmissions.find((s: any) => s.difficulty === "Medium")?.count || 0,
+            hardSolved: data.totalSubmissions.find((s: any) => s.difficulty === "Hard")?.count || 0,
             ranking: data.ranking || 0,
             loading: false
           });
