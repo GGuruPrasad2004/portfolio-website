@@ -28,7 +28,7 @@ const projects = [
     shadow: "group-hover:shadow-[0_0_40px_rgba(168,85,247,0.2)]",
     tags: ["RAG", "Qwen LLM", "NLP", "Python"],
     github: "#",
-    demo: "#",
+    demo: "/wip",
   },
   {
     title: "Smart Traffic Congestion Management System",
@@ -40,7 +40,7 @@ const projects = [
     shadow: "group-hover:shadow-[0_0_40px_rgba(6,182,212,0.2)]",
     tags: ["YOLO", "PyTorch", "Raspberry Pi Pico", "MLP"],
     github: "#",
-    demo: "#",
+    demo: "/wip",
   },
 
   {
