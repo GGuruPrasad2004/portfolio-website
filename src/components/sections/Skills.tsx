@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { FadeIn } from "@/components/ui/animation-wrappers";
 
@@ -38,6 +38,15 @@ export default function Skills() {
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
 
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
+    checkDesktop();
+    window.addEventListener("resize", checkDesktop);
+    return () => window.removeEventListener("resize", checkDesktop);
+  }, []);
+
   return (
     <section id="skills" ref={containerRef} className="relative py-32 bg-[#0c0505] overflow-hidden">
       {/* Background Orbs */}
@@ -64,7 +73,7 @@ export default function Skills() {
             return (
               <motion.div 
                 key={category.title}
-                style={{ y: yTransform }}
+                style={{ y: isDesktop ? yTransform : 0 }}
                 className="relative group"
               >
                 <div className={`absolute -inset-0.5 bg-gradient-to-b ${category.color} rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-500`} />
