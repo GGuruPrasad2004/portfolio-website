@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useAnimationFrame } from "framer-motion";
 import { FadeIn } from "@/components/ui/animation-wrappers";
 import { Brain, Code, Database, Globe, Cpu, Layers, Server, TerminalSquare, Box, Container } from "lucide-react";
@@ -20,6 +20,17 @@ const technologies = [
 
 export default function TechArsenal() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [radius, setRadius] = useState(280);
+
+  useEffect(() => {
+    const updateRadius = () => {
+      // 380px radius for desktop, 250px for mobile
+      setRadius(window.innerWidth >= 768 ? 380 : 250);
+    };
+    updateRadius();
+    window.addEventListener("resize", updateRadius);
+    return () => window.removeEventListener("resize", updateRadius);
+  }, []);
   
   // Custom 3D rotation animation
   useAnimationFrame((t) => {
@@ -59,7 +70,7 @@ export default function TechArsenal() {
                   key={idx}
                   className="absolute inset-0 glass rounded-2xl border border-white/10 flex flex-col items-center justify-center gap-4 hover:border-rose-500/50 hover:bg-white/10 transition-colors shadow-[0_0_30px_rgba(0,0,0,0.5)] group"
                   style={{
-                    transform: `rotateY(${angle}deg) translateZ(280px)`,
+                    transform: `rotateY(${angle}deg) translateZ(${radius}px)`,
                     backfaceVisibility: "hidden"
                   }}
                 >
