@@ -1,7 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { FadeIn } from "@/components/ui/animation-wrappers";
 
 const skillCategories = [
@@ -28,30 +27,8 @@ const skillCategories = [
 ];
 
 export default function Skills() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  // Smoother, unidirectional parallax so cards don't separate too much
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -40]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, -80]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -20]);
-  const y4 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const yZero = useTransform(scrollYProgress, [0, 1], [0, 0]);
-
-  const [isDesktop, setIsDesktop] = useState(true);
-
-  useEffect(() => {
-    const checkDesktop = () => setIsDesktop(window.innerWidth >= 768);
-    checkDesktop();
-    window.addEventListener("resize", checkDesktop);
-    return () => window.removeEventListener("resize", checkDesktop);
-  }, []);
-
   return (
-    <section id="skills" ref={containerRef} className="relative py-32 bg-[#0c0505] overflow-hidden">
+    <section id="skills" className="relative py-32 bg-[#0c0505] overflow-hidden">
       {/* Background Orbs */}
       <div className="absolute top-1/4 left-10 w-96 h-96 bg-red-500/10 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-orange-500/10 rounded-full blur-[100px] pointer-events-none" />
@@ -70,17 +47,10 @@ export default function Skills() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, idx) => {
-            // Assign different but consistent upward speeds
-            let yTransform = y1;
-            if (idx === 1) yTransform = y2;
-            if (idx === 2) yTransform = y3;
-            if (idx === 3) yTransform = y4;
-            
             return (
               <motion.div 
                 key={category.title}
-                style={{ y: isDesktop ? yTransform : yZero }}
-                className="relative group"
+                className="relative group h-full"
               >
                 <div className={`absolute -inset-0.5 bg-gradient-to-b ${category.color} rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-500`} />
                 <div className="relative h-full glass p-8 rounded-3xl border border-white/10 hover:border-white/20 transition-colors flex flex-col items-center text-center">
