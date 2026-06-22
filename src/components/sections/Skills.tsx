@@ -34,9 +34,11 @@ export default function Skills() {
     offset: ["start end", "end start"],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
+  // Smoother, unidirectional parallax so cards don't separate too much
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -80]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -20]);
+  const y4 = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   const [isDesktop, setIsDesktop] = useState(true);
 
@@ -67,8 +69,11 @@ export default function Skills() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, idx) => {
-            // Apply different parallax speeds based on index
-            const yTransform = idx % 3 === 0 ? y1 : idx % 2 === 0 ? y2 : y3;
+            // Assign different but consistent upward speeds
+            let yTransform = y1;
+            if (idx === 1) yTransform = y2;
+            if (idx === 2) yTransform = y3;
+            if (idx === 3) yTransform = y4;
             
             return (
               <motion.div 
