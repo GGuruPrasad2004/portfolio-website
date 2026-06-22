@@ -41,7 +41,7 @@ export default function TechArsenal() {
   // Custom 3D rotation animation
   useAnimationFrame((t) => {
     if (containerRef.current) {
-      const angle = t / 15; // Speed of rotation
+      const angle = t / 40; // Speed of rotation - Increased divisor for slower, more majestic rotation
       containerRef.current.style.transform = `rotateY(${angle}deg)`;
     }
   });
