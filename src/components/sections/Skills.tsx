@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { FadeIn } from "@/components/ui/animation-wrappers";
 
 const skillCategories = [
@@ -27,8 +28,21 @@ const skillCategories = [
 ];
 
 export default function Skills() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"],
+  });
+
+  // Very subtle, unidirectional parallax to prevent any overlapping on any device
+  const y1 = useTransform(scrollYProgress, [0, 1], [0, -20]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, -40]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, -10]);
+  const y4 = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
   return (
-    <section id="skills" className="relative py-32 bg-[#0c0505] overflow-hidden">
+    <section id="skills" ref={containerRef} className="relative py-32 bg-[#0c0505] overflow-hidden">
       {/* Background Orbs */}
       <div className="absolute top-1/4 left-10 w-96 h-96 bg-red-500/10 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-orange-500/10 rounded-full blur-[100px] pointer-events-none" />
@@ -47,9 +61,16 @@ export default function Skills() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, idx) => {
+            // Apply the subtle upward parallax based on the card index
+            let yTransform = y1;
+            if (idx === 1) yTransform = y2;
+            if (idx === 2) yTransform = y3;
+            if (idx === 3) yTransform = y4;
+
             return (
               <motion.div 
                 key={category.title}
+                style={{ y: yTransform }}
                 className="relative group h-full"
               >
                 <div className={`absolute -inset-0.5 bg-gradient-to-b ${category.color} rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-500`} />
