@@ -40,7 +40,7 @@ export default function Hero() {
         </FadeIn>
 
         <FadeIn delay={1.7} direction="up">
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-bold tracking-tight mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-heading font-bold tracking-tight mb-4">
             Hi, I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-orange-500 to-rose-500">G Guru Prasad</span>
           </h1>
         </FadeIn>

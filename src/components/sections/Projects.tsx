@@ -106,7 +106,7 @@ function TiltCard({ project }: { project: typeof projects[0] }) {
         <div className={`absolute inset-0 bg-gradient-to-br ${project.color} rounded-3xl blur-2xl`} />
       </div>
       
-      <div className="relative z-10 p-8 h-full flex flex-col pointer-events-none">
+      <div className="relative z-10 p-6 sm:p-8 h-full flex flex-col pointer-events-none">
         <div style={{ transform: "translateZ(40px)" }} className="mb-6 bg-[#0c0505] w-16 h-16 rounded-2xl border border-white/10 flex items-center justify-center shadow-lg">
           {project.icon}
         </div>

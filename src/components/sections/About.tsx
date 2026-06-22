@@ -109,7 +109,7 @@ export default function About() {
                     <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-[#1a0b0b] group-[.is-active]:bg-red-500/20 group-[.is-active]:border-red-500/50 text-slate-500 group-[.is-active]:text-red-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors">
                       <div className="w-2 h-2 rounded-full bg-red-500" />
                     </div>
-                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm shadow transition-all hover:border-red-500/30">
+                    <div className="ml-auto md:ml-0 w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm shadow transition-all hover:border-red-500/30">
                       <div className="flex flex-col mb-1">
                         <span className="text-red-400 font-mono text-sm">2023 - 2027</span>
                         <h4 className="text-lg font-bold text-white">B.E. in AI & Machine Learning</h4>
@@ -124,7 +124,7 @@ export default function About() {
                     <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white/10 bg-[#1a0b0b] group-[.is-active]:bg-orange-500/20 group-[.is-active]:border-orange-500/50 text-slate-500 group-[.is-active]:text-orange-500 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 transition-colors">
                       <div className="w-2 h-2 rounded-full bg-orange-500" />
                     </div>
-                    <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm shadow transition-all hover:border-orange-500/30">
+                    <div className="ml-auto md:ml-0 w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] p-4 rounded-xl border border-white/5 bg-white/5 backdrop-blur-sm shadow transition-all hover:border-orange-500/30">
                       <div className="flex flex-col mb-1">
                         <span className="text-orange-500 font-mono text-sm">Graduated 2023</span>
                         <h4 className="text-lg font-bold text-white">HSC (XII)</h4>
