@@ -24,8 +24,14 @@ export default function TechArsenal() {
 
   useEffect(() => {
     const updateRadius = () => {
-      // 380px radius for desktop, 250px for mobile
-      setRadius(window.innerWidth >= 768 ? 380 : 250);
+      // Massive radius for desktop to prevent congestion, medium for tablet, tight for mobile
+      if (window.innerWidth >= 1024) {
+        setRadius(550);
+      } else if (window.innerWidth >= 768) {
+        setRadius(400);
+      } else {
+        setRadius(250);
+      }
     };
     updateRadius();
     window.addEventListener("resize", updateRadius);
