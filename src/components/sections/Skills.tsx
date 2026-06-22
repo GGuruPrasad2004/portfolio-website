@@ -39,6 +39,7 @@ export default function Skills() {
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -80]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -20]);
   const y4 = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const yZero = useTransform(scrollYProgress, [0, 1], [0, 0]);
 
   const [isDesktop, setIsDesktop] = useState(true);
 
@@ -78,7 +79,7 @@ export default function Skills() {
             return (
               <motion.div 
                 key={category.title}
-                style={{ y: isDesktop ? yTransform : 0 }}
+                style={{ y: isDesktop ? yTransform : yZero }}
                 className="relative group"
               >
                 <div className={`absolute -inset-0.5 bg-gradient-to-b ${category.color} rounded-3xl blur opacity-20 group-hover:opacity-40 transition duration-500`} />
